@@ -1,0 +1,125 @@
+LINUX CONFIG
+
+  - git config --global user.name "<name>"
+  - git config --global user.email "<email>"
+  - git config --global core.editor <editor>
+
+    - git config
+      --list
+      user.name
+      user.email
+      ...
+
+//GITHUB
+
+  - Generating a new SSH key
+    - https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+      - $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+      - cat ~/.ssh/id_rsa.pub
+        - copy all ssh-rsa key and add to github ssh
+
+      - $ eval "$(ssh-agent -s)"
+      - $ ssh-add ~/.ssh/id_rsa
+
+  // Connecting remote repository to your local repository
+
+    - git remote add origin git@github:<GitUserName>/<repository>.git
+    - git push -u origin master
+
+    git remote 
+      remove : remove the currently git
+
+    git clone <github repository> <folder>
+
+FILE STATUS LIFECYCLE GIT
+  - UNTRACKED
+    - file that git not see
+
+  - UNMODIFIED 
+    - git add <file>
+      - git can see the file, but doesn't have any change 
+
+    
+  - MODIFIED
+    - ever that the file was modified git change
+      status to modified
+
+      - then run git add <file> for the change status to staged
+
+  - STAGED
+    - the file is available to commit
+    - git commit : 
+      - send the file to unmodified
+
+START 
+
+  - git init
+    - create a folder .git/
+
+  - dir .git/ 
+    - inside the folder
+    
+      - HEAD : 
+        - currently branch
+
+      - branches :
+        - show all branches
+
+      - description
+      - hooks 
+      - info - objects 
+      - refs
+
+COMMANDS
+  - git init
+    - now git start to track the folder
+
+  - git add <file>
+    - git track the file and see all changes 
+
+  - git commit
+    - save file
+
+    -m " "
+    -am : add file modified and add a message 
+
+  - git log 
+    - show all commits
+    
+    --decorate
+    --author="<name>"
+    shortlog
+      - show all commits, authors and how much commits every author made
+      -sn : show just how many commits every author makes
+    --graph
+
+  - git show
+    - show the latest commit in the current branch
+
+  - git diff
+    - show all changes in the file
+
+    --name-only : show only the changed file
+
+  //RESET CHANGES  
+
+    - git checkout <file>
+      - return all changes make in the file
+
+    - git reset HEAD <file>
+      - after you made git add <file>
+      - you return file status to before it was add
+        - return from staged to modified
+
+      --soft
+        - return the file status to staged
+
+      --mixed 
+        - return the file status to modified
+
+      --hard <before currently commit hash>
+        - reset all changes made in the commit
+
+
+    
